@@ -1,0 +1,18 @@
+<ion-view view-title="Bible">
+  <ion-content>
+ 		<form >
+ 		
+ 			<input type="text" ng-model="target.book" placeholder="book"/>
+ 			<input type="text" ng-model="target.chapter" placeholder="chapter"/>
+			
+			
+			<input type="text" ng-model="target.verse" placeholder="verse"/>
+			<button style="display:inline-block; float:left; width: 25%;" ng-click="getPassage(target)">get passage</button>
+		
+  		</form><br>
+  		
+		<h2 class="text-center">{{book_name}} {{chapterNum}}</h2>
+		<div><p ng-bind-html = "chapter"></p></div>
+   
+  </ion-content>
+</ion-view>
