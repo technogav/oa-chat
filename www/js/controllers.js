@@ -61,6 +61,16 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 				}
 			});
 		});
+		
+		 $scope.longList  = 
+  			['Genesis','Exodus','Leviticus', 'Deuteronomy', 'Joshua', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings'];
+			//$scope.longList.push(i);
+		
+		$scope.chapterList  = 
+  			['1','2','3', '4', '5', '6', '7', '8', '9'];
+			//$scope.longList.push(i);
+		  
+		
 		$scope.verse = null;
 		$scope.passage = "";
 		$scope.book = "Genesis";
@@ -111,15 +121,63 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 				});
 				
 				});
-			/*$http.get(url,{jsonpCallbackParam: 'callback'})
-				.then(function(json){
-				console.log(json.data.book);
-				
-			})*/
-
-				
-		}
+			
+		}//end getPassage();
 		
+		$scope.bookList = 
+	
+			({book:'Genesis', chapters: 50},
+			{book:'Exodus', chapters: 40},
+			{book:'Leviticus', chapters: 27},
+			{book:'Numbers', chapters: 36},
+			{book:'Deuteronomy', chapters: 34},
+			{book:'Joshua', chapters: 24},
+			{book:'Ruth', chapters: 21},
+			{book:'1 Samuel', chapters: 31},
+			{book:'2 Samuel', chapters: 24},
+			{book:'1 Kings', chapters: 22},
+			{book:'2 Kings', chapters: 25},
+			{book:'1 Chronicles', chapters: 29},
+			{book:'2 Chronicles', chapters: 36},
+			{book:'Ezra', chapters: 10},
+			{book:'Nehemiah', chapters: 13},
+			{book:'Esther', chapters: 10},
+			{book:'Job', chapters: 42},
+			{book:'Psalms', chapters: 150},
+			{book:'Proverbs', chapters: 31},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39},
+			{book:'genesis', chapters: 39});
+		
+		var x = ['Genesis','Exodus','Leviticus', 'Deuteronomy', 'Joshua', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings'];
+		$scope.c = ['Choose Chapter',1,2,3,4,5,6,7,8,9];
+	   
+	console.log($scope.bookList.length);
+
 	
 	
 

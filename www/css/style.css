@@ -3,6 +3,13 @@ sub {
     font-size: .75em;
 	color:red;
 }
+
+.top {
+    vertical-align: text-top;
+}
+
+.avatar-padding{padding-left: 7px;}
+.bible-text-padding{padding:25px;}
 input{float:left;
 display:inline-block;width:25%;}
 
