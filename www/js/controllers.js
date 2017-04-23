@@ -8,44 +8,29 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 	var auth = firebase.auth();							
 	var provider = new firebase.auth.FacebookAuthProvider();
 	
-	$scope.$on("$ionicView.beforeEnter", function(){	
+	//send chat to database if loggin with facebook
+	$scope.sendChat = function(chat){
 		auth.onAuthStateChanged(function(user) {
-			
-				if (user) {
-					console.log("logged In");console.log(user.profile_image_url);
-					$scope.chats.$add({
-						user:user.displayName,
-						message: chat.message,
-						imgURL: user.photoURL
-					});
-				}else{
-					alert("Continue With Facebook to send messages.");
-				}
-		});
-	});
-
-		$scope.sendChat = function(chat){
-			auth.onAuthStateChanged(function(user) {
-				if (user) {
-					console.log(chat);
-					console.log("logged In");
+			if (user) {		
+				console.log("logged In");
+				if(user.message !== ""){
+					//add to firebase
 					$scope.chats.$add({
 						user: user.displayName,
 						message: chat.message,
 						imgURL: user.photoURL
 					});
-				}else{
-					alert("Continue With Facebook to send messages.");
 				}
-				chat.message = "";
-			});
-			
-		};
-			
+			}else{
+				alert("Continue With Facebook to send messages.");
+			}
+			chat.message = "";
+		});
+	};
 	
-	
+	//function to $remove post if they are older than one week
+
 	$scope.chats = $firebaseArray(ref);
-	//var ref = new Firebase('https://oa-chat-1628f.firebaseio.com/');//problem with FB connection
 	
 }])
 
@@ -54,13 +39,40 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 		var ref = firebase.database().ref("messages/");
 		var auth = firebase.auth();							
 		var provider = new firebase.auth.FacebookAuthProvider();
+		$scope.chats = $firebaseArray(ref);
+		
+		//get starting scripture if non is selected
 		$scope.$on("$ionicView.beforeEnter", function(){	
 		auth.onAuthStateChanged(function(user) {
-				if($scope.chapter === ""){
+				if($scope.displayChapter === ""){
+					
 					$scope.getPassage();
 				}
 			});
 		});
+		$scope.chatVerse = "";
+		
+		//send chat
+		$scope.sendChat = function(chat){
+			auth.onAuthStateChanged(function(user) {
+				if (user) {
+					
+					
+					$scope.chats.$add({
+						user: user.displayName,
+						message: $scope.chatVerse,
+						imgURL: user.photoURL
+					}).then(function(){
+						alert("scripture has been posted");
+					})
+					
+				}else{
+					alert("Continue With Facebook to send messages.");
+				}
+				$scope.chatVerse = "";
+			});
+			
+		};
 		
 		 $scope.longList  = 
   			['Genesis','Exodus','Leviticus', 'Deuteronomy', 'Joshua', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings'];
@@ -74,7 +86,7 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 		$scope.verse = null;
 		$scope.passage = "";
 		$scope.book = "Genesis";
-		$scope.chapter = "";
+		$scope.displayChapter = "";
 		$scope.verse = 1;
 		var book = "";
 		var chapter = 1;
@@ -83,7 +95,7 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 			console.log(ver)
 		}
 		$scope.getPassage = function(target){
-			console.log('get passage');
+			
 			if(target === undefined){
 				book = 'genesis';
 				chapter = 1;
@@ -108,16 +120,20 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 				$scope.book_name = data.book_name;
 				$scope.chapterNum = chapterNum;
 				var i = 1;
-				$scope.chapter = "";
+				$scope.displayChapter = [];
 				angular.forEach(data.book[chapterNum], function(data){
 				$scope.chapterNum = chapterNum;	
 					angular.forEach(data,function(data){					
 						//<a href='#/tab/bible' ng-click='send_verse("+ data.verse +")'> + "</a>"
-						$scope.chapter += "<sub>" + i + "</sub>" + data.verse;
+						//$scope.displayChapter += "<sub>" + i + "</sub>" + data.verse;
+						//console.log(data.verse_nr);
+						$scope.displayChapter[i] = {ver: data.verse, num:data.verse_nr};
+						
 						$scope.book_chapter = data.verse
 						 
 						i++;	
 					})
+					//console.log($scope.displayChapter);
 				});
 				
 				});
@@ -178,7 +194,9 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 	   
 	console.log($scope.bookList.length);
 
-	
+	$scope.getTheVerse = function(verse){
+		$scope.chatVerse += verse;
+	}
 	
 
 

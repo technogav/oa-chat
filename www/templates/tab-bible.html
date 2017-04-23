@@ -16,52 +16,25 @@
 		Go
 		
 	</button>
-  <!--
-   <ion-item>
-   <ion-label>Toppings</ion-label>
-   <ion-select [(ngModel)]="toppings" multiple="true">
-     <ion-option>Bacon</ion-option>
-     <ion-option>Black Olives</ion-option>
-    <ion-option>Extra Cheese</ion-option>
-    <ion-option>Mushrooms</ion-option>
-    <ion-option>Pepperoni</ion-option>
-    <ion-option>Sausage</ion-option>
-     </ion-select>
-    </ion-item>-->
-  
- <!--	<div class="list">
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Books
-    </div>
-    <select>
-      <option>Black Olives</option>
-      <option selected>Bacon</option>
-      <option>Extra Cheese</option>
-      <option>Mushrooms</option>
-      <option>Pepperoni</option>
-      <option>Sausage</option>
-    </select>
-  </label>
-</div>-->	
-  
 
- 		<!--
- 			<select ng-model="target.book">
- 				<option ng-repeat="book in x">{{book}}</option>
-			</select>
- 			<select type="text" ng-model="target.chapter">
- 				<option ng-repeat="chapter in c">{{chapter}}</option>
-			</select>
-			
-			
-			<input type="text" ng-model="target.verse" placeholder="verse"/>
-			<button style="display:inline-block; float:left; width: 25%;" ng-click="getPassage(target)">get passage</button>
-		-->
-  		
   		
 		<h2 class="text-center">{{book_name}} {{chapterNum}}</h2>
-		<div class="bible-text-padding"><p ng-bind-html = "chapter"></p></div>
+		<div class="bible-text-padding">
+			<span ng-repeat="x in displayChapter" ng-click="getTheVerse(x.ver)">{{x.ver}} <sub>{{x.num}}</sub></span>
+		</div>
 		
   </ion-content>
+   <div class="login-form" style="position: absolute; bottom: 40px; width: 100%">
+    	<div class="list">
+    		<div class="item item-input-inset">
+    			<label class="item-input-wrapper">
+    				<input style="background:yellow; width:100%; height:auto;" type="text" placeholder="Message" ng-model="chatVerse"/>
+    				<!--<textarea style="background:yellow; width:100%; height:auto;" msd-elastic ng-model="chatVerse">
+					 
+					</textarea>-->
+				</label>
+    				<button class="button button-positive ion ion-ios-chatbubble" ng-click="sendChat(chat)"></button>
+    		</div>
+    	</div>
+	</div>
 </ion-view>
