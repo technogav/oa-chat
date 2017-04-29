@@ -24,15 +24,25 @@
 		</div>
 		
   </ion-content>
+  <!--start of the text bar-->
    <div class="login-form" style="position: absolute; bottom: 40px; width: 100%">
-    	<div class="list">
-    		<div class="item item-input-inset">
-    			<label class="item-input-wrapper">
-    				<input style="background:yellow; width:100%; height:auto;" type="text" placeholder="Message" ng-model="chatVerse"/>
+    	<div class="list text-bar">
+    		<div class="item item-input-inset chatbar">
+    			
+    			
+    				<textarea class="item-input-wrapper" msd-elastic="\n" ng-model="chatVerse">
+					  ...
+					</textarea>
+			</div>
+			<div class="delete">
+				
+				<span><i class = "icon icon ion-happy-outline"></i></span>
+			</div>
+    				<!--<input style="background:yellow; width:100%; height:auto;" type="text" placeholder="Message" ng-model="chatVerse"/>-->
     				<!--<textarea style="background:yellow; width:100%; height:auto;" msd-elastic ng-model="chatVerse">
 					 
 					</textarea>-->
-				</label>
+				
     				<button class="button button-positive ion ion-ios-chatbubble" ng-click="sendChat(chat)"></button>
     		</div>
     	</div>

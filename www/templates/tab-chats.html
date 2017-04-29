@@ -1,4 +1,4 @@
-<ion-view view-title="Chats" id="chats">
+<ion-view class="pane" view-title="Chats" id="chats">
   <ion-content padding="true" class="has-header">
 		<div class="card chat-bubble" ng-style="style(chat)" ng-repeat="chat in chats" href="https://facebook.com/{{chat.user}}">
 
@@ -26,11 +26,18 @@
   <div class="login-form" style="position: absolute; bottom: 40px; width: 100%">
     	<div class="list">
     		<div class="item item-input-inset">
-    			<label class="item-input-wrapper">
-    				<input type="text" placeholder="Message" ng-model="chat.message"/>
+    			<div class="textbar">
+   				  <div class="textbar-bar"></div>
+           		  <div class="delete">
+           		  	<ion-icon md-close-circle ios="ios-close-circle" md="md-close-circle"></ion-icon></div>
+                </div>
+<!--<textarea class="item-input-wrapper" msd-elastic="\n" ng-model="chat.message">
+					  ...
+				</textarea>-->
+    				<!--<input type="text" placeholder="Message" ng-model="chat.message"/>-->
     				
-    			</label>
-    				<button class="button button-positive ion ion-ios-chatbubble" ng-click="sendChat(chat)"></button>
+    			
+			  <button class="button button-positive ion ion-ios-chatbubble" ng-click="sendChat(chat)"></button>
     		</div>
     	</div>
 	</div>

@@ -13,6 +13,12 @@ sub {
 #chat-bubble-left{
 	flex:1
 }
+.pane {
+    background-image: url('../img/oa logo.png'); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
 #chat-bubble-left h6{text-align:center;}
 #chat-bubble-right{
 	flex:4;
@@ -35,7 +41,11 @@ padding-bottom: 56.25%;
 padding-top: 30px; height: 0; overflow: hidden;
 	width:100%;
 }
- 
+.textbar{width:85%;
+	
+	display:flex;}
+.textbar-bar{flex:7;background:yellow;height:20px;}
+.delete{flex:1;}
 .video-container iframe,
 .video-container object,
 .video-container embed {
