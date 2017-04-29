@@ -1,25 +1,27 @@
 <ion-view view-title="Chats" id="chats">
   <ion-content padding="true" class="has-header">
-		<div class="card" style="border-radius:18px; background-color:#E5E8EC;" ng-repeat="chat in chats" href="https://facebook.com/{{chat.user}}">
+		<div class="card chat-bubble" ng-style="style(chat)" ng-repeat="chat in chats" href="https://facebook.com/{{chat.user}}">
 
-				<div style="background-color:#E5E8EC" class="item item-text-wrap">
-				<span>{{chat.message}}</span>
-					<span style="float:right; margin-top:10px;">{{chat.user}}<img class="top avatar-padding" ng-src="{{chat.imgURL}}" alt="W3Schools" width="30" /></span>
-					
-					
-					
-				</div>
+				
+				
+					<div id="chat-bubble-left">
+						<div class="chat-bubble-left ">
+							<img class="top avatar" ng-src="{{chat.imgURL}}" alt="W3Schools" width="45" />
+						</div>
+						<div class="chat-bubble-left ">
+							<h6>{{chat.user}}</h6>
+						</div>		
+					</div>
+					<div id="chat-bubble-right">
+					{{chat.message}}
+
+						
+					</div>
+	
+		  
 			</div>	
 
-			
-    	
-    
-    <form>
-    
-    	
-    	
-    </form>
-    
+   
   </ion-content>
   <div class="login-form" style="position: absolute; bottom: 40px; width: 100%">
     	<div class="list">
@@ -34,3 +36,6 @@
 	</div>
     
 </ion-view>
+<!--<div class="chat-bubble-left">
+							
+						</div>-->

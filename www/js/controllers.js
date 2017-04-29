@@ -1,16 +1,23 @@
 angular.module('starter.controllers', ['firebase'])
 
 
-.controller('ChatsCtrl', ['$scope', '$rootScope', '$firebaseArray', 'firebase', '$firebaseAuth',
-function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
+.controller('ChatsCtrl', ['$scope', '$rootScope', '$firebaseArray', 'firebase', '$firebaseAuth','$ionicScrollDelegate',
+function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth,$ionicScrollDelegate) {
+	$scope.$on("$ionicView.afterEnter", function(){
+		$ionicScrollDelegate.scrollBottom();
+	});
+	$scope.$on('$ionicView.loaded', function () {
+		$ionicScrollDelegate.scrollBottom();
+	});
 	
 	var ref = firebase.database().ref("messages/");
 	var auth = firebase.auth();							
 	var provider = new firebase.auth.FacebookAuthProvider();
-	
+	var xuser = firebase.auth().currentUser;
 	//send chat to database if loggin with facebook
 	$scope.sendChat = function(chat){
 		auth.onAuthStateChanged(function(user) {
+			$rootScope.loggedInUser = user;
 			if (user) {		
 				console.log("logged In");
 				if(user.message !== ""){
@@ -21,16 +28,47 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 						imgURL: user.photoURL
 					});
 				}
+				
 			}else{
 				alert("Continue With Facebook to send messages.");
 			}
 			chat.message = "";
+			$ionicScrollDelegate.scrollBottom();
 		});
 	};
 	
+	
 	//function to $remove post if they are older than one week
 
+	//function to check and style your own posts
+		
+	
 	$scope.chats = $firebaseArray(ref);
+	
+	/*console.log($rootScope.user);
+	$scope.click = function(){
+		console.log(xuser.displayName);
+		
+		angular.forEach($scope.chats, function(chat){
+			console.log(chat.user);
+			if(chat.user === xuser.displayName){
+
+				chat.user.myChat = true;
+			}else{
+				chat.user.myChat = false;
+			}
+		});
+
+	}*/
+	
+	$scope.style = function(chat){
+		if(chat.user === "Gavin Murphy"){
+			return{background:'lightgrey', 'float':'right'}
+		}
+	}
+	var objDiv = document.getElementById("chats");
+	objDiv.scrollBottom = objDiv.scrollHeight;
+	
 	
 }])
 
@@ -327,6 +365,7 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 									
 									var displayName = result.user.displayName;
 									$scope.displayName =displayName;
+									
 										
 									var photoURL = result.user.photoURL;
 									//$scope.picture = $src(photoURL);
@@ -342,6 +381,7 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth) {
 
 
 							};
+							//$rootScope.displayName = firebase.auth().currentUser;
 								
 								$scope.logout = function(){
 									firebase.auth().signOut().then(function() {

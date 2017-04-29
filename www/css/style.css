@@ -3,12 +3,28 @@ sub {
     font-size: .75em;
 	color:red;
 }
-
+.chat-bubble{
+	width:85%;
+	border-radius:18px; 
+	background-color:#E5E8EC;
+	min-height: 85px;
+	display:flex;
+}
+#chat-bubble-left{
+	flex:1
+}
+#chat-bubble-left h6{text-align:center;}
+#chat-bubble-right{
+	flex:4;
+	
+}
+.chat-bubble-left{}
+.dynamic-style{background:pink;}
 .top {
     vertical-align: text-top;
 }
 
-.avatar-padding{padding-left: 7px;}
+.avatar{border-radius: 15px; margin:8px;}
 .bible-text-padding{padding:25px;}
 input{float:left;
 display:inline-block;width:25%;}
