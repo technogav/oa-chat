@@ -40,7 +40,7 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth,$ionicScrol
 	
 	//function to $remove post if they are older than one week
 
-	//function to check and style your own posts
+	
 		
 	
 	$scope.chats = $firebaseArray(ref);
@@ -60,7 +60,13 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth,$ionicScrol
 		});
 
 	}*/
+	//function to delete the text in the text area
+	$scope.delete = function(chat){
+		chat.message = "";
+	}
 	
+	
+	//function to check and style your own posts
 	$scope.style = function(chat){
 		if(chat.user === "Gavin Murphy"){
 			return{background:'lightgrey', 'float':'right'}
