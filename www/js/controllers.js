@@ -1,5 +1,8 @@
 angular.module('starter.controllers', ['firebase'])
 
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
+})
 
 .controller('ChatsCtrl', ['$scope', '$rootScope', '$firebaseArray', 'firebase', '$firebaseAuth','$ionicScrollDelegate',
 function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth,$ionicScrollDelegate) {
@@ -240,6 +243,9 @@ function($scope, $rootScope, $firebaseArray, firebase, $firebaseAuth,$ionicScrol
 
 	$scope.getTheVerse = function(verse){
 		$scope.chatVerse += verse;
+	}
+	$scope.delete = function(){
+		$scope.chatVerse = "";
 	}
 	
 

@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
       <ion-side-menu-content>
-        <ion-nav-bar class="bar-stable">
+        <ion-nav-bar class="bar-custom">
           <ion-nav-back-button>
           </ion-nav-back-button>
 
@@ -11,18 +11,22 @@
         </ion-nav-bar>
 
         <!-- TABS -->
-        <ion-tabs>
+        <ion-tabs class="tabs-icon-top tabs-custom">
 
-          <ion-tab title="Search" icon-off="ion-search" icon-on="ion-search" href="#/app/search">
-            <ion-nav-view name="tab-search"></ion-nav-view>
+          <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/app/chats">
+            <ion-nav-view name="app-chats"></ion-nav-view>
           </ion-tab>
 
-          <ion-tab title="Browse" icon-off="ion-ios-glasses" icon-on="ion-ios-glasses" href="#/app/browse">
-            <ion-nav-view name="tab-browse"></ion-nav-view>
+          <ion-tab title="Bible" icon-off="ion-ios-bookmarks-outline" icon-on="ion-ios-bookmarks" href="#/app/bible">
+            <ion-nav-view name="app-bible"></ion-nav-view>
           </ion-tab>
 
-          <ion-tab title="Playlist" icon-off="ion-ipod" icon-on="ion-ipod" href="#/app/playlists">
-            <ion-nav-view name="tab-playlists"></ion-nav-view>
+          <ion-tab title="Sermons" icon-off="ion-social-youtube-outline" icon-on="ion-social-youtube" href="#/app/sermons">
+            <ion-nav-view name="app-sermons"></ion-nav-view>
+          </ion-tab>
+           
+           <ion-tab title="Account" icon-off="ion-social-youtube-outline" icon-on="ion-social-youtube" href="#/app/account">
+            <ion-nav-view name="app-account"></ion-nav-view>
           </ion-tab>
 
         </ion-tabs>
@@ -31,19 +35,22 @@
 
        <!-- Side Menu (left) -->
       <ion-side-menu side="left">
-        <ion-header-bar class="bar-stable">
+        <ion-header-bar class="navbar">
           <h1 class="title">Left</h1>
         </ion-header-bar>
         <ion-content>
           <ion-list>
-            <ion-item menu-close href="#/app/search">
-              Search
+            <ion-item menu-close href="#/app/account">
+              Login
             </ion-item>
-            <ion-item menu-close href="#/app/browse">
-              Browse
+            <ion-item menu-close href="#/app/bible">
+              My Chats
             </ion-item>
-            <ion-item menu-close href="#/app/playlists">
-              Playlists
+            <ion-item menu-close href="#/app/sermons">
+              Settings
+            </ion-item>
+            <ion-item menu-close href="#/app/sermons">
+              Logout
             </ion-item>
           </ion-list>
         </ion-content>

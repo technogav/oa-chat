@@ -32,17 +32,71 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  /*  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
-  })
+  })*/
 
   // Each tab has its own nav history stack:
 
+  ////////////////////////////////////////////////////////////////////
+  //the following block is for testing purposes
+  .state('app', {
+    url: "/app",
+    abstract: true,
+    templateUrl: "templates/ion-side-menu-tabs.html",
+    controller: 'AppCtrl'
+  })
+
+  .state('app.chats', {
+    url: "/chats",
+    views: {
+        'app-chats': {
+          templateUrl: 'templates/tab-chats.html',
+          controller: 'ChatsCtrl'
+        }
+      }
+  })
+
+  .state('app.bible', {
+    url: "/bible",
+    views: {
+        'app-bible': {
+          templateUrl: 'templates/tab-bible.html',
+          controller: 'BibleCtrl'
+        }
+      }
+  })
+
+  .state('app.sermons', {
+    url: "/sermons",
+   views: {
+        'app-sermons': {
+          templateUrl: 'templates/tab-sermons.html',
+          controller: 'SermonCtrl'
+        }
+      }
+  })
+	
+.state('app.account', {
+    url: "/account",
+   views: {
+        'app-account': {
+          templateUrl: 'templates/tab-account.html',
+          controller: 'AccountCtrl'
+        }
+      }
+  });
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/chats');
+});
+
   
 
-  .state('tab.chats', {
+  ////////////////////////////////////////////////////
+
+ /* .state('app.chats', {
       url: '/chats',
       views: {
         'tab-chats': {
@@ -52,10 +106,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
       }
     })
   
-  .state('tab.bible', {
+  .state('app.bible', {
       url: '/bible',
       views: {
-        'tab-bible': {
+        'app-bible': {
           templateUrl: 'templates/tab-bible.html',
           controller: 'BibleCtrl'
         }
@@ -63,7 +117,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
     })
 	  
 	
-	.state('tab.sermons', {
+	.state('app.sermons', {
       url: '/sermons',
       views: {
         'tab-sermons': {
@@ -74,7 +128,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
     })
     
 
-  .state('tab.account', {
+  .state('app.account', {
     url: '/account',
     views: {
       'tab-account': {
@@ -85,6 +139,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','f
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/chats');
+  $urlRouterProvider.otherwise('/app/chats');
 
-});
+});*/
